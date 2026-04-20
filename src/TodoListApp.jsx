@@ -27,11 +27,18 @@ function TodoListApp(){
     ]);
     // const addTodo = (text) -> setTodos((todos) => [...todos, new Todo(text)])
 
+    const toggleTodo = (id) => {
+        setTodos(
+            todos.map((todo) => 
+                todo.id === id ? {...todo, isCompleted : !todo.isCompleted} : todo
+            )
+        )
+    }
     return(
         <div className="todo">
             <TodoHeader/>
             <TodoAdder addTodo={addTodo}/>
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} toggleTodo={toggleTodo}/>
         </div>
     )
 }

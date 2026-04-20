@@ -1,12 +1,16 @@
 import Button from './Button';
 import Checkbox from './Checkbox.jsx';
 
-export default function TodoItem({ todo }){
+export default function TodoItem({ todo, toggleTodo }){
 
     return(
         // todo.isCompleted ? " todo__item--complete" : ""
-        <li className={`todo__item${todo.isCompleted ? "todo__item--completed" : ""}`}>
-            <Checkbox id={todo.id}>{todo.text}</Checkbox>
+        <li className={`todo__item${todo.isCompleted ? " todo__item--complete":""}`}>
+            <Checkbox
+                id={todo.id}
+                checked={todo.isCompleted}
+                onChange={() => toggleTodo(todo.id)}
+            >{todo.text}</Checkbox>
             <Button className='todo__button todo__button--edit'>✏️</Button>
             <Button className='todo__button todo__button--delete'>❌</Button>
         </li>
